@@ -1,6 +1,6 @@
 function validateForm(){
 	/* validar campo obligatorio en nombre, apellido, correo y contraseña */
-    var aviso = alert("Por favor llena los campos obigatorios: Nombre, apellido, correo, contraseña y bicicleta");
+    var aviso = alert("Por favor aegúrate de haber llenado los campos obligatorios: \n Nombre, Apellido, Correo, Contraseña y Bicicleta");
     
     var valor = document.getElementById("name").value;
     if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
@@ -15,12 +15,16 @@ function validateForm(){
        return aviso;
     }
     var valorCuatro = document.getElementById("input-password").value;
-    if( valorCuatro == null || valorCuatro.length == 0 || /^\s+$/.test(valorCuatro) ) {
+    if( valorCuatro == null || valorCuatro.length == 0) {
         return aviso;
+    } if ( !(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(valor)) ){
+        return alert("Ingresa un correo válido");
     }
     var valorCinco = document.getElementById("input-social").value;
     if( valorCinco == null || valorCinco .length == 0 || /^\s+$/.test(valorCinco ) ) {
         return aviso;
     }
+    
+
     
 }
