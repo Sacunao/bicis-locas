@@ -1,23 +1,52 @@
 function validateForm(){
-	
-    var valor = document.getElementById("name").value;
-    if(valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
-        return alert("Ingresa un nombre");
-    } 
-    var valorDos = document.getElementById("lastname").value;
-    if(valorDos == null || valorDos.length == 0 || /^\s+$/.test(valorDos) ) {
-        return alert("Ingresa un apeliido");
-    }
-    var valorTres = document.getElementById("input-email").value;
-    if(valorTres == null || valorTres.length == 0 || !/^[0-9a-zA-Z._.-]+\@[0-9a-zA-Z._.-]+\.[0-9a-zA-Z]+$/.test(valorTres)) {
-       return alert("Ingresa un correo");
-    }
-    var valorCuatro = document.getElementById("input-password").value;
-    if(valorCuatro == null || valorCuatro.length == 0 || valorCuatro.length <= 6 || valorCuatro == "123456" || valorCuatro == "98754" || valorCuatro == "password") {
-        return alert("Contraseña no válida");
-    }
-    var valorCinco = document.getElementById("input-social").value;
-    if(valorCinco == null || valorCinco .length == 0 || /^\s+$/.test(valorCinco ) ) {
-        return alert("elige una opcion");
-    }
+    //Creando variables para establecer condiiciones
+    var nombre = document.getElementById("name").value;
+    var apellido = document.getElementById("lastname").value;
+    var correo = document.getElementById("input-email").value; 
+    var contrasenia = document.getElementById("input-password").value;
+    var withoutOpcion = document.querySelector("select").value;
+    
+	if (nombre.length == 0 && apellido == 0 && correo == 0 && contrasenia == 0) {
+		alert ("Complete los campos obligatorios.");
+        
+	} else {
+       
+		if(nombre == null || nombre.length == 0 || nombre == "") {
+			alert("Escriba un nombre.");
+		} else if ( /[0-9]/.test(nombre)) {
+			alert("No ingrese números por favor.");
+		} else if ( /^[a-z]/.test(nombre.charAt(0))) {
+			alert ("Escriba el primer caracter de su nombre en mayúscula.");
+		}
+        
+        
+		if(apellido == null || apellido.length == 0 || apellido == "") {
+			alert("Escribe tu apellido.");
+		} else if (/[0-9]/.test(apellido)) {
+			alert("No ingrese números por favor.");
+		} else if (/^[a-z]/.test(apellido.charAt(0))) {
+			alert ("Escriba el primer caracter de su apellido en mayúscula.");
+		}
+        
+        var emailFormat=/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+		if (!emailFormat.test(correo)) {
+			alert("Ingrese un correo válido.");
+		};
+        
+        
+		if (contrasenia == null || contrasenia.length == 0 || contrasenia == "") {
+			alert("Ingresa una contraseña.");
+		} else if (contrasenia.length < 6){
+			alert("Contraseña no válida, debe tener como mínimo 6 caracteres.");
+		}
+
+		if (contrasenia == "123456" || contrasenia == "098754" || contrasenia == "password") {
+			alert ("'123456', '098754' y 'password' no son contraseñas válidas, intenta de nuevo por favor.");
+		};
+        
+       
+		if (withoutOpcion == 0) {
+			alert("Elige tu tipo de bici.");
+		}
+	};
 }
